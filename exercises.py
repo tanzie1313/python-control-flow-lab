@@ -226,6 +226,64 @@ def determine_season():
 # Call the function
 determine_season()
 
+# Exercise 6: Number Guessing Game
+#
+# Write a Python function named `guess_number` that allows a user to guess a predetermined number within a range.
+#
+# Requirements:
+# - Set a fixed number as the target for guessing (e.g., 42).
+# - Prompt the user to guess a number within a range (e.g., 1 to 100).
+# - Allow the user to guess up to five times.
+# - After each guess, use conditional statements with AND, OR, and NOT to give the user hints like:
+#   - "Guess is too low" or "Guess is too high."
+#   - "Last chance!" when they are on their fifth guess.
+# - Print "Congratulations, you guessed correctly!" if they guess the number.
+# - Print "Sorry, you failed to guess the number in five attempts." if they do not succeed.
+#
+# Hints:
+# - Use a for loop with a range to limit guesses to five.
+# - Use logical AND, OR, and NOT to check conditions and provide appropriate feedback.
+
+def guess_number():
+    target = 42  # Fixed target number
+    max_attempts = 5
+
+    for attempt in range(1, max_attempts + 1):
+        try:
+            guess = int(input("Guess a number between 1 and 100: ").strip())
+        except ValueError:
+            print("Invalid input. Please enter a valid number.")
+            continue
+
+        # Use OR to check if the guess is outside the valid range.
+        if guess < 1 or guess > 100:
+            print("Your guess is out of range. Please guess between 1 and 100.")
+            continue
+
+        # Check if the guess is correct
+        if guess == target:
+            print("Congratulations, you guessed correctly!")
+            return
+        else:
+            # Use AND to check conditions that should both be true
+            if guess < target and (guess >= 1 and guess <= 100):
+                print("Your guess is too low.")
+            elif guess > target and (guess >= 1 and guess <= 100):
+                print("Your guess is too high.")
+
+            # Use NOT to invert a condition: warn the user if they haven't guessed correctly,
+            # and it's their final attempt.
+            if not (attempt < max_attempts):
+                print("Last chance!")
+    
+    # If the loop completes without a correct guess, inform the user.
+    print("Sorry, you failed to guess the number in five attempts.")
+
+# Call the function
+guess_number()
+
+
+
 
 
 
