@@ -155,6 +155,11 @@ def weather_advice():
     # Prompt the user for weather conditions
     cold_input = input("Is it cold? (yes/no): ").strip().lower()
     raining_input = input("Is it raining? (yes/no): ").strip().lower() #whitespace removed/ convert to lowercase
+    
+    # Use OR to check if either input is invalid
+    if cold_input not in ("yes", "no") or raining_input not in ("yes", "no"):
+        print("Invalid input. Please answer with 'yes' or 'no'.")
+        return
 
     # Determine weather conditions based on user input
     is_cold = cold_input == "yes"
