@@ -74,11 +74,28 @@ check_letter()
 # - Use a conditional statement to check if the age meets the minimum voting age requirement.
 
 def check_voting_eligibility():
-    # Your control flow logic goes here
+    try:
+        # Prompt the user to input their age
+        age = int(input("Please enter your age: ").strip()) #can use a try except block to handle invalid input in python
+
+        # Validate the input to ensure the age is not negative
+        if age < 0:
+            print("Invalid input. Age cannot be negative.")
+        else:
+            # Set the minimum voting age
+            voting_age = 18
+
+            # Check if the user is eligible to vote
+            if age >= voting_age:
+                print("You are eligible to vote!")
+            else:
+                print("You are not old enough to vote.")
+    except ValueError:
+        # Handle cases where the input is not a valid integer
+        print("Invalid input. Please enter a valid number.")
 
 # Call the function
 check_voting_eligibility()
-
 
 
 
